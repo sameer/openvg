@@ -511,7 +511,7 @@ func selectfont(s string) C.Fontinfo {
 	case "mono":
 		return C.MonoTypeface
 	case "helvetica":
-		return C.HelveticaTypeFace
+		return C.HelveticaTypeface
 	}
 	return C.SerifTypeface
 }
