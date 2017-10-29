@@ -274,7 +274,7 @@ void init(int *w, int *h) {
                 Helvetica_glyphInstructions,
                 Helvetica_glyphInstructionIndices,
                 Helvetica_glyphInstructionCounts,
-                Helvetica_glyphAdvances, Helvetica_characterMap, Helvetica_glyphCount)
+                Helvetica_glyphAdvances, Helvetica_characterMap, Helvetica_glyphCount);
 	HelveticaTypeface.descender_height = Helvetica_descender_height;
 	HelveticaTypeface.font_height = Helvetica_font_height;
 	*w = state->window_width;
