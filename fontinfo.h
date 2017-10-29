@@ -13,7 +13,7 @@ extern "C" {
 		VGPath Glyphs[500];
 	} Fontinfo;
 
-	extern Fontinfo SansTypeface, SerifTypeface, MonoTypeface, HelveticaTypeFace;
+	extern Fontinfo SansTypeface, SerifTypeface, MonoTypeface, HelveticaTypeface;
 
 #if defined(__cplusplus)
 }
