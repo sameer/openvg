@@ -17,6 +17,7 @@
 #include "DejaVuSans.inc"				   // font data
 #include "DejaVuSerif.inc"
 #include "DejaVuSansMono.inc"
+#include "Helvetica.inc"
 #include "eglstate.h"					   // data structures for graphics state
 #include "fontinfo.h"					   // font data structure
 
@@ -221,7 +222,7 @@ void dumpscreen(int w, int h, FILE * fp) {
 	free(ScreenBuffer);
 }
 
-Fontinfo SansTypeface, SerifTypeface, MonoTypeface;
+Fontinfo SansTypeface, SerifTypeface, MonoTypeface, HelveticaTypeface;
 
 // initWindowSize requests a specific window size & position, if not called
 // then init() will open a full screen window.
@@ -268,7 +269,14 @@ void init(int *w, int *h) {
 				DejaVuSansMono_glyphAdvances, DejaVuSansMono_characterMap, DejaVuSansMono_glyphCount);
 	MonoTypeface.descender_height = DejaVuSansMono_descender_height;
 	MonoTypeface.font_height = DejaVuSansMono_font_height;
-
+	HelveticaTypeface = loadfont(Helvetica_glyphPoints,
+                Helvetica_glyphPointIndices,
+                Helvetica_glyphInstructions,
+                Helvetica_glyphInstructionIndices,
+                Helvetica_glyphInstructionCounts,
+                Helvetica_glyphAdvances, Helvetica_characterMap, Helvetica_glyphCount)
+	HelveticaTypeface.descender_height = Helvetica_descender_height;
+	HelveticaTypeface.font_height = Helvetica_font_height;
 	*w = state->window_width;
 	*h = state->window_height;
 }
@@ -278,6 +286,7 @@ void finish() {
 	unloadfont(SansTypeface.Glyphs, SansTypeface.Count);
 	unloadfont(SerifTypeface.Glyphs, SerifTypeface.Count);
 	unloadfont(MonoTypeface.Glyphs, MonoTypeface.Count);
+	unloadfont(HelveticaTypeface.Glyphs, HelveticaTypeface.Count);
 	eglSwapBuffers(state->display, state->surface);
 	eglMakeCurrent(state->display, EGL_NO_SURFACE, EGL_NO_SURFACE, EGL_NO_CONTEXT);
 	eglDestroySurface(state->display, state->surface);
