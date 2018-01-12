@@ -2,3 +2,4 @@ font2openvg
 *~
 *.o
 *.so
+.idea
